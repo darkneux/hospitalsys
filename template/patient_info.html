@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" style="/*! color: ; */background-color: #469d8d;">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+  <style>
+    .patient-info {
+  border: 1px solid black;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.patient-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background-color: #f2f7ff;
+}
+
+.patient-header h2 {
+  font-size: 24px;
+  margin: 0;
+  color: black;
+}
+
+.patient-header img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.patient-body {
+  padding: 16px;
+  background-color: lightblue;
+}
+
+.patient-field {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.patient-field label {
+  font-weight: bold;
+  margin-right: 12px;
+  width: 120px;
+  color: black;
+}
+
+.patient-field span {
+  flex: 1;
+  color: black;
+}
+nav {
+  background-color: #393838;
+  height: 70px;
+  display: flex;
+  justify-content: left;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+}
+
+li {
+  margin: 0 20px;
+}
+
+a {
+  display: block;
+  color: #dce6dd;
+  text-decoration: none;
+  padding: 12px;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+
+  background-color: #fff;
+  color: #333;
+}
+
+  </style>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Patient Information</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+  <ul>
+    <li><a href="{%url 'home'%}">Home</a></li>
+    <li><a href="{% url 'patient_list' %}">Patient List</a></li>
+    <li><a href="{% url 'add_patient' %}">New Patient</a></li>
+    <li><a href="{% url 'logout' %}" style="color: #dd4545;" >LogOut</a></li>
+  </ul>
+</nav>
+
+  <div class="patient-info">
+  <div class="patient-header">
+    <h2>Patient Information</h2>
+  </div>
+  <div class="patient-body">
+    <div class="patient-field">
+      <label>Name:</label>
+      <span>{{ patient.first_Name }} {{ patient.last_Name }}</span>
+    </div>
+    <div class="patient-field">
+      <label>Gender:</label>
+      <span>{{ patient.sex }}</span>
+    </div>
+    <div class="patient-field">
+      <label>Address:</label>
+      <span>{{ patient.address }}</span>
+    </div>
+    <div class="patient-field">
+      <label>Phone:</label>
+      <span>{{ patient.phone }}</span>
+    </div>
+    <div class="patient-field">
+      <label>Email:</label>
+      <span>{{ patient.email }}</span>
+    </div>
+    <div class="patient-field">
+      <label>Age:</label>
+      <span>{{ patient.age }}</span>
+    </div>
+    <div class="patient-field">
+      <label>Nationality:</label>
+      <span>{{ patient.nationality }}</span>
+    </div>
+    <div class="patient-field">
+      <label>Insurance Policy ID:</label>
+      <span>{{ patient.insurance_policy_ID }}</span>
+    </div>
+    <div class="patient-field">
+      <label>National ID Card Number:</label>
+      <span>{{ patient.Nation_Card_ID}}</span>
+    </div>
+    <div class="patient-field">
+      <label>Admit Date:</label>
+      <span>{{ patient.admit_date|date:"m/d/Y" }}</span>
+    </div>
+<!--    <div class="patient-field">-->
+<!--      <label>Discharge Date:</label>-->
+<!--      <span>{% if patient.discharge_date %}{{ patient.discharge_date|date:"m/d/Y" }}{% else %}-&#45;&#45;{% endif %}</span>-->
+<!--    </div>-->
+  </div>
+</div>
+
+
+</body>
+</html>

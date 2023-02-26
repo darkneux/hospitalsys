@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html style="/*! color: ; */background-color: #469d8d;" lang="en"><head>
+  <title>Create Patient Record</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #469d8d;
+    }
+
+    form {
+      background-color: #d7eeea;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+      max-width: 500px;
+      margin: auto;
+    }
+
+    input[type="text"], input[type="email"], select {
+      display: block;
+      width: 95%;
+      padding: 7px;
+      border: none;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    input[type="submit"] {
+      background-color: black;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .submit-btn {
+  background-color: #4CAF50; /* Green background */
+  border: none; /* Remove border */
+  color: white; /* White text */
+  padding: 12px 24px; /* Some padding */
+  font-size: 16px; /* Set a font size */
+  cursor: pointer; /* Change cursor on hover */
+  border-radius: 25px; /* Add border radius */
+  transition: background-color 0.3s ease; /* Add transition */
+}
+
+.submit-btn:hover {
+  background-color: #3e8e41; /* Darker green on hover */
+}
+
+.address-field {
+  margin-bottom: 20px;
+}
+
+.address-field label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.address-field textarea {
+  width: 95%;
+  height: 80px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  resize: none;
+}
+
+.address-field textarea:focus {
+  border: 1px solid #2196F3;
+  outline: none;
+}
+h1 {
+  text-align: center;
+}
+
+nav {
+  background-color: #393838;
+  height: 70px;
+  display: flex;
+  justify-content: left;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+}
+
+li {
+  margin: 0 20px;
+}
+
+a {
+  display: block;
+  color: #dce6dd;
+  text-decoration: none;
+  padding: 12px;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+
+  background-color: #fff;
+  color: #333;
+}
+
+
+  </style>
+</head>
+<body>
+
+<nav>
+  <ul>
+    <li><a href="{%url 'home'%}">Home</a></li>
+    <li><a href="{% url 'patient_list' %}">Patient List</a></li>
+    <li><a href="{% url 'add_patient' %}">New Patient</a></li>
+    <li><a href="{% url 'logout' %}" style="color: #dd4545;" >LogOut</a></li>
+  </ul>
+</nav>
+
+
+<div class="form-container">
+<!--     <h1>Patient Form </h1>-->
+  <form action="" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="first_name">First Name:</label>
+      <input type="text" id="first_name" name="first_name" required placeholder="Enter first name...">
+    </div>
+    <div class="form-group">
+      <label for="last_name">Last Name:</label>
+      <input type="text" id="last_name" name="last_name" required placeholder="Enter last name...">
+    </div>
+    <div class="form-group">
+      <label for="sex">Sex:</label>
+      <select id="sex" name="sex" required>
+        <option value="" disabled selected>Select sex...</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="age">Age:</label>
+      <input type="text" id="age" name="age" required placeholder="Enter age...">
+    </div>
+    <div class="form-group">
+      <label for="nationality">Nationality:</label>
+      <select id="nationality" name="nationality" required>
+        <option value="" disabled selected>Select nationality...</option>
+        <option value="Indian">Indian</option>
+        <option value="American">American</option>
+        <option value="British">British</option>
+        <option value="Canadian">Canadian</option>
+        <!-- add more options here... -->
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="insurance_policy_id">Insurance Policy ID:</label>
+      <input type="text" id="insurance_policy_id" name="insurance_policy_id" required placeholder="Enter insurance policy ID...">
+    </div>
+    <div class="form-group">
+      <label for="nation_card_id">Nation Card ID:</label>
+      <input type="text" id="nation_card_id" name="nation_card_id" required placeholder="ex:  NationCard ID , AadharID ...">
+    </div>
+
+    <div class="form-group">
+      <label for="phone">PhoneNo:</label>
+      <input type="text" id="phone" name="phone" placeholder="Enter PhoneNo...">
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="Enter email...">
+    </div>
+    <div class="address-field">
+      <label for="address">Address:</label>
+     <textarea id="address" name="address" placeholder="Enter your address"></textarea>
+    </div>
+
+   <button type="submit" class="submit-btn">Submit</button>
+  </form>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" style="/*! color: ; */background-color: #469d8d;">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    .my-div {
+  background-color: lightblue;
+  color: black;
+  padding: 1px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  cursor: pointer;
+  text-align: left;
+  width: auto;
+  padding-left:27px;
+}
+
+.my-div:hover {
+  background-color: #b9d7e1;
+  color: green;
+  transition: all 0.1s ease-in-out;
+}
+ .list{
+ padding:1px;
+ }
+ nav {
+  background-color: #393838;
+  height: 70px;
+  display: flex;
+  justify-content: left;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+}
+
+li {
+  margin: 0 20px;
+}
+
+a {
+  display: block;
+  color: #dce6dd;
+  text-decoration: none;
+  padding: 12px;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+
+  background-color: #fff;
+  color: #333;
+}
+
+    </style>
+</head>
+<body>
+<nav>
+  <ul>
+    <li><a href="{%url 'home'%}">Home</a></li>
+    <li><a href="{% url 'patient_list' %}">Patient List</a></li>
+    <li><a href="{% url 'add_patient' %}">New Patient</a></li>
+    <li><a href="{% url 'logout' %}" style="color: #dd4545;" >LogOut</a></li>
+  </ul>
+</nav>
+
+<h3>Patient Information</h3>
+{% block content %}
+<div class="list">
+{% for patient in patients %}
+  <a href="{{patient.patient_ID}}/">
+    <div class="my-div">
+      <p>
+        <span class="label">Name:</span>
+        <span class="value">{{ patient.first_Name }} {{ patient.last_Name }}</span>
+        <span class="label">ID:</span>
+        <span class="value">#{{ patient.patient_ID }}</span>
+
+      </p>
+    </div>
+  </a>
+{% endfor %}
+</div>
+{% endblock %}
+
+</body>
+</html>

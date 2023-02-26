@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+nav {
+  background-color: #393838;
+  height: 70px;
+  display: flex;
+  justify-content: left;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+}
+
+li {
+  margin: 0 20px;
+}
+
+a {
+  display: block;
+  color: #dce6dd;
+  text-decoration: none;
+  padding: 12px;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+
+  background-color: #fff;
+  color: #333;
+}
+    </style>
+</head>
+<body>
+<nav>
+  <ul>
+    <li><a href="{%url 'home'%}">Home</a></li>
+    <li><a href="{% url 'patient_list' %}">Patient List</a></li>
+    <li><a href="{% url 'add_patient' %}">New Patient</a></li>
+    <li><a href="{% url 'logout' %}" style="color: #dd4545;" >LogOut</a></li>
+  </ul>
+</nav>
+<h3>
+    home page //</h3>
+
+</body>
+</html>
