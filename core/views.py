@@ -1,9 +1,10 @@
-from django.shortcuts import render
-from .models import *
 from django.contrib.auth import login,authenticate,logout
-
+from django.shortcuts import render, get_object_or_404
 from django.shortcuts import redirect
 from django.http import HttpResponseRedirect
+from django.shortcuts import render
+from .models import Patient_Info
+
 def core(request):
     return render(request,'index.html')
 
@@ -30,36 +31,31 @@ def loginPage(request):
 
 
 
-from django.shortcuts import render
-from .models import Patient_Info
+
+
 
 def patientList(request):
+    if not request.user.is_authenticated:
+        return redirect('/login/')
     patients = Patient_Info.objects.all() # get all patients from the database
     context = {'patients': patients} # pass patients to the context dictionary
     return render(request, 'patient_list.html', context) # render the patient list template with the context data
 
 
 
-from django.shortcuts import render, get_object_or_404
+
 
 def patientInfo(request, patient_id):
     if not request.user.is_authenticated:
-
         return redirect('/login/')
-    patient = get_object_or_404(Patient_Info, patient_ID=patient_id)
 
+    patient = get_object_or_404(Patient_Info, patient_ID=patient_id)
     context = {
         'patient': patient,
     }
     return render(request, 'patient_info.html', context)
 
 
-from django.shortcuts import render, redirect
-
-
-from django.shortcuts import render
-from django.http import HttpResponseRedirect
-from .models import Patient_Info
 
 def addPatient(request):
 
